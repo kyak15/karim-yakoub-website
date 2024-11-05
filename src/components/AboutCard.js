@@ -23,7 +23,7 @@ const AboutCard = ({ darkMode }) => {
 
     const downloadCV = async()=>{
         try {
-            const URL = `https://www.googleapis.com/drive/v3/files/${process.env.REACT_APP_FILE_ID}/export?key=${process.env.REACT_APP_API_KEY}`
+            const URL = `https://www.googleapis.com/drive/v3/files/${process.env.REACT_APP_FILE_ID}/export?key=${process.env.REACT_APP_API_KEY}&?mimetype=application/pdf`
             const response = await axios.get(URL, {responseType: 'blob', params: {'mimeType': 'application/pdf' }})
             download(response.data, 'Karim_Yakoub_Resume.pdf', 'application/pdf')
             
@@ -78,7 +78,7 @@ const AboutCard = ({ darkMode }) => {
                 <div className='text-center mt-4'>
                     <Card.Link
                         onClick={downloadCV}
-                        className={`btn btn-primary btn-sm round ${darkMode ? 'btn-dark':'btn-light text-dark'}`}
+                        className={`btn btn-primary btn-sm round ${!darkMode ? 'btn-light text-dark':'btn-dark'}`}
                         target='blank'
                     >
                         
