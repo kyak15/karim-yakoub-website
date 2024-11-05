@@ -22,7 +22,7 @@ const AboutCard = ({ darkMode }) => {
     
 
     const downloadCV = async()=>{
-        const URL = `googleapis.com/drive/v3/files/${REACT_APP_FILE_ID}/export?key=${REACT_APP_API_KEY}`
+        const URL = `googleapis.com/drive/v3/files/${process.env.REACT_APP_FILE_ID}/export?key=${process.env.REACT_APP_API_KEY}`
         const response = await axios.get(URL, {responseType: 'blobm', params: {'mimetype': 'application/pdf' }})
 
         try {
