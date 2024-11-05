@@ -11,30 +11,10 @@ import {
 } from '@fortawesome/free-brands-svg-icons'
 import portImage from '../img/portfolio_image.jpg'
 import skills from '../content/skills'
-import axios from 'axios'
 
 
 const AboutCard = ({ darkMode }) => {
     const textColor = darkMode ? 'text-light' : 'text-dark'
-
-    
-    
-    
-
-    const downloadCV = async()=>{
-        try {
-            
-            const URL = `https://www.googleapis.com/drive/v3/files/${process.env.REACT_APP_FILE_ID}/export?key=${process.env.REACT_APP_API_KEY}&alt=media`
-            const response = await axios.get(URL, {responseType: 'blob', params: {'mimeType': 'application/pdf' }})
-            download(response.data, 'Karim_Yakoub_Resume.pdf', 'application/pdf')
-            
-        } catch (error) {
-            alert('Sorry! Issue Downloading Resume')
-        }
-
-    
-
-    }
 
     return (
         <Card className="mb-3" bg={darkMode ? 'dark' : 'white'} border={darkMode ? 'secondary' : ''}>
