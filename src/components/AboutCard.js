@@ -77,12 +77,12 @@ const AboutCard = ({ darkMode }) => {
 
                 <div className='text-center mt-4'>
                     <Card.Link
-                        onClick={downloadCV}
+                        
                         className={`btn btn-primary btn-sm round ${darkMode ? 'btn-light text-dark':'btn-dark text-light'}`}
                         target='blank'
                     >
                         
-                        <span className='pl-.5'>Download resume</span>
+                        <a href='https://docs.google.com/document/d/1Z8Qvj1W8hh8-NbZ0_KyQbfAaFNO2LNjy/edit?usp=sharing&ouid=117373798775114112241&rtpof=true&sd=true'><span className='pl-.5'>Download resume</span></a>
                     </Card.Link>
                 </div> 
 
