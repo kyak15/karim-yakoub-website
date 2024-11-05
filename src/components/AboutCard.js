@@ -11,9 +11,30 @@ import {
 } from '@fortawesome/free-brands-svg-icons'
 import portImage from '../img/portfolio_image.jpg'
 import skills from '../content/skills'
+import axios from 'axios'
+import download from 'downloadjs'
 
 const AboutCard = ({ darkMode }) => {
     const textColor = darkMode ? 'text-light' : 'text-dark'
+
+    
+    
+    
+
+    const downloadCV = async()=>{
+        const URL = `googleapis.com/drive/v3/files/${REACT_APP_FILE_ID}/export?key=${REACT_APP_API_KEY}`
+        const response = await axios.get(URL, {responseType: 'blobm', params: {'mimetype': 'application/pdf' }})
+
+        try {
+            download(response.data, 'Karim_Yakoub_Resume.pdf', 'application/pdf')
+            
+        } catch (error) {
+            alert('Sorry! Issue Downloading Resume')
+        }
+
+    
+
+    }
 
     return (
         <Card className="mb-3" bg={darkMode ? 'dark' : 'white'} border={darkMode ? 'secondary' : ''}>
@@ -57,7 +78,7 @@ const AboutCard = ({ darkMode }) => {
 
                 <div className='text-center mt-4'>
                     <Card.Link
-                        href='../public/resume/Karim_Yakoub_Resume.pdf'
+                        onClick={downloadCV}
                         className={`btn btn-primary btn-sm round ${darkMode ? 'btn-light text-dark' : 'btn-dark'}`}
                         target='blank'
                     >
