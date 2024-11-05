@@ -12,7 +12,7 @@ import {
 import portImage from '../img/portfolio_image.jpg'
 import skills from '../content/skills'
 import axios from 'axios'
-import download from 'downloadjs'
+
 
 const AboutCard = ({ darkMode }) => {
     const textColor = darkMode ? 'text-light' : 'text-dark'
@@ -23,6 +23,7 @@ const AboutCard = ({ darkMode }) => {
 
     const downloadCV = async()=>{
         try {
+            
             const URL = `https://www.googleapis.com/drive/v3/files/${process.env.REACT_APP_FILE_ID}/export?key=${process.env.REACT_APP_API_KEY}&alt=media`
             const response = await axios.get(URL, {responseType: 'blob', params: {'mimeType': 'application/pdf' }})
             download(response.data, 'Karim_Yakoub_Resume.pdf', 'application/pdf')
@@ -77,12 +78,14 @@ const AboutCard = ({ darkMode }) => {
 
                 <div className='text-center mt-4'>
                     <Card.Link
-                        onClick={downloadCV}
+                        
                         className={`btn btn-primary btn-sm round ${darkMode ? 'btn-light text-dark':'btn-dark text-light'}`}
                         target='blank'
                     >
                         
-                        <span className='pl-.5'>Download resume</span>
+                        <a href='https://docs.google.com/document/d/1Z8Qvj1W8hh8-NbZ0_KyQbfAaFNO2LNjy/edit?usp=sharing&ouid=117373798775114112241&rtpof=true&sd=true'><span className='pl-.5'>Download resume</span></a>
+
+                        
                     </Card.Link>
                 </div> 
 
