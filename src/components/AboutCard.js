@@ -23,10 +23,10 @@ const AboutCard = ({ darkMode }) => {
 
     const downloadCV = async()=>{
         const URL = `https://www.googleapis.com/drive/v3/files/${process.env.REACT_APP_FILE_ID}/export?key=${process.env.REACT_APP_API_KEY}`
-        const response = await axios.get(URL, {responseType: 'blob', params: {'mimetype': 'application/pdf' }})
+        const response = await axios.get(URL, {responseType: 'blob', params: {'mimeType': 'application/pdf' }})
 
         try {
-            await download(response.data, 'Karim_Yakoub_Resume.pdf', 'application/pdf')
+            download(response.data, 'Karim_Yakoub_Resume.pdf', 'application/pdf')
             
         } catch (error) {
             alert('Sorry! Issue Downloading Resume')
