@@ -14,7 +14,6 @@ import Project from '../components/Project'
 import milestones from '../content/milestones'
 import education from '../content/education'
 import leadership from '../content/leadership'
-import skills from '../content/skills'
 import projects from '../content/projects'
 import AboutCard from '../components/AboutCard'
 
