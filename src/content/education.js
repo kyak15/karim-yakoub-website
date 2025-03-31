@@ -3,7 +3,7 @@ const educationContent =
         {
             "company": "Oregon State University",
             "location": "Corvallis, OR",
-            "duration": "Jan 2023 - Present",
+            "duration": "Jan 2023 - March 2025",
             "extra": "Expected BS 2020, MS 2021",
             "roles": [
                 {
