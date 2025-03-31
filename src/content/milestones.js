@@ -7,7 +7,7 @@ const milestones = [
       {
         title: "Software Engineer",
         description: [
-          "",
+          "I am currently working as a software engineer where I utilize technologies such as Next.js, React, Typescript, Docker, and PostGrestSQL (PostgreSQL-based API and database solution).",
         ],
       },
     ],
