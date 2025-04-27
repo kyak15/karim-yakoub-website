@@ -10,7 +10,7 @@ const educationContent =
                     "title": "Bachelor of Science in Computer Science",
                     "description": [
                         
-                        "I am currently obtaining my BS in Computer Science at Oregon State University. I have enjoyed every moment of studying Computer Science since starting my degree. Oregon State's curriculum emphasizes positive design habits for readable, extensible code and thorough tests. The school provides fundamental courses and electives that have improved my skills for software engineering. In addition, numerous classes required us to work in groups, and promoted pair programming which benefitted students to collaborate and create the best quality code.",
+                        "I received my second Bachelor's degree from Oregon State University. I enjoyed every moment of studying Computer Science since starting my degree. Oregon State's curriculum emphasizes positive design habits for readable, extensible code and thorough tests. The school provides fundamental courses and electives that have improved my skills for software engineering. In addition, numerous classes required us to work in groups, and promoted pair programming which benefitted students to collaborate and create the best quality code.",
             
                     ],
                 }
