@@ -15,7 +15,7 @@ const milestones = [
   {
     company: "Bonny Systems",
     location: "Wayne, NJ",
-    duration: "Jan 2024 - Present",
+    duration: "Jan 2023 - Dec 2024",
     roles: [
       {
         title: "Junior Software Engineer",
@@ -28,7 +28,7 @@ const milestones = [
   {
     company: "Code Ninjas",
     location: "Saddlebrook, NJ",
-    duration: "Oct 2024 - Present",
+    duration: "Oct 2024 - Dec 2024",
     roles: [
       {
         title: "Computer Science Teacher",
