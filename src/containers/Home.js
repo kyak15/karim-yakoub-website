@@ -3,6 +3,7 @@ import { Button, Col, Container, Row } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faCode,
+  faFileAlt,
   faGraduationCap,
   faLaptopCode,
   faMoon,
@@ -31,12 +32,20 @@ class Home extends React.Component {
     document.body.classList.toggle('bg-dark')
   };
 
+  onResumeClick = () => {
+    window.open('/karim_yakoub_resume.pdf', '_blank');
+  };
+
   render = () => (
     <Container className={`px-md-0 py-5 ${this.state.darkMode ? 'text-light' : 'text-dark'}`}>
       <div id='dark-mode-toggle' className='text-right'>
         <Button variant="link" onClick={this.onDarkModeToggle} className='mode-toggle' title={this.state.darkMode ? 'Light mode' : 'Dark mode'}>
           <FontAwesomeIcon id='sun' icon={faSun} className={this.state.darkMode ? 'inactive-icon' : 'active-icon'}/>
           <FontAwesomeIcon icon={faMoon} className={this.state.darkMode ? 'active-icon' : 'inactive-icon'} />
+        </Button>
+        <Button variant="link" onClick={this.onResumeClick} className='mode-toggle' title='Resume'>
+          <FontAwesomeIcon icon={faFileAlt} /> 
+          <span className='pl-3'>Resume</span>
         </Button>
       </div>
       <Row>

@@ -122,6 +122,21 @@ a:focus,
 #dark-mode-toggle {
   position: relative;
   z-index: 2000; /* above sticky header */
+  display: flex;
+  justify-content: flex-end;
+  gap: 5px;
+}
+#dark-mode-toggle .btn {
+  margin-left: 0;
+  border-radius: 20px;
+  padding: 8px 12px;
+  transition: all 0.2s ease;
+}
+#dark-mode-toggle .btn:hover {
+  background-color: rgba(103, 128, 99, 0.1);
+}
+.text-light #dark-mode-toggle .btn:hover {
+  background-color: rgba(214, 231, 214, 0.2);
 }
 .mode-toggle .active-icon,
 .mode-toggle:hover .inactive-icon {
