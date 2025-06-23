@@ -7,7 +7,7 @@ const milestones = [
       {
         title: "Software Engineer",
         description: [
-          "I am currently working as a software engineer where I utilize technologies such as Next.js, React, Typescript, Docker, and PostGrestSQL (PostgreSQL-based API and database solution).",
+          "As a Software Engineer at Mindhop since January 2025, I’ve refactored over 3,000 lines of legacy React code with TanStack Query—cutting API call redundancy by 40%—and optimized PostgREST queries to slash dashboard load times by 30%. I built 10+ reusable Next.js and Tailwind components to accelerate feature delivery, integrated KendoReact and eCharts for richer, interactive data visualizations, and wrote PostGIS SQL to improve map-search accuracy within defined boundaries. To round out our workflow, I automated builds and deployments by crafting Dockerfiles and GitHub Actions pipelines, removing manual steps and speeding up releases.",
         ],
       },
     ],
