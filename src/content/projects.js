@@ -1,5 +1,20 @@
 const projectContent =
     [
+                {
+            "title": "RPM Pickleball - Professional E=Commerce Store",
+            "description": "JavaScript, React, Next.js, PostgreSQL",
+            "details": {
+                "bullets": [
+                    "Delivered a responsive e-commerce platform using Next.js, React, and PostgreSQL by designing a custom storefront and integrating the Shop API for secure checkout.",
+                    "Increased conversions and improved UX by building dynamic product and cart components in React with real-time pricing and API data.",
+                    "Achieved 2,000+ successful transactions through secure order handling and stable Shop API integration backed by PostgreSQL",  
+                ],
+                "link": {
+                    "url": "https://rpmpb.com/",
+                    "text": "Visit the Site Here!"
+                }
+            }
+        },
         {
             "title": "Crescendo Music Reviews Full-Stack App",
             "description": "JavaScript, React, Node, Express, PostgreSQL, Docker, Digital Ocean",
