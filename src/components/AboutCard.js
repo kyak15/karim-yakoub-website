@@ -1,66 +1,76 @@
-import React from 'react'
-import { Card } from 'react-bootstrap'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {
-    // faFileDownload,
-    faMapMarkerAlt,
-} from '@fortawesome/free-solid-svg-icons'
-import {
-    faGithub,
-    faLinkedin
-} from '@fortawesome/free-brands-svg-icons'
-import portImage from '../img/portfolio_image.jpg'
-import skills from '../content/skills'
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
+import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import portImage from "../img/portfolio_image.jpg";
+import skills from "../content/skills";
 
 const AboutCard = ({ darkMode }) => {
-    const textColor = darkMode ? 'text-light' : 'text-dark'
+  const textColorClass = darkMode ? "text-gray-100" : "text-gray-900";
+  const cardBgClass = darkMode
+    ? "bg-gray-800 border border-gray-600"
+    : "bg-transparent border border-gray-500";
 
-    return (
-        <Card className="mb-3" bg={darkMode ? 'dark' : 'white'} border={darkMode ? 'secondary' : ''}>
+  return (
+    <div className={`rounded-lg overflow-hidden mb-3 ${cardBgClass}`}>
+      {/* Image with overlay */}
+      <div className="relative">
+        <img
+          src={portImage}
+          alt="Karim Yakoub"
+          className="w-full h-auto"
+        />
+        <div className="absolute inset-0 flex flex-col justify-start p-4 text-black">
+          <h2 className="font-patua text-2xl">Karim Yakoub</h2>
+          <p className="font-medium text-sm w-1/2 md:w-3/4">
+            Software Engineer
+          </p>
+        </div>
+      </div>
 
-            <Card.Img variant='top' src={portImage} />
+      {/* Card body */}
+      <div className="p-4">
+        {/* Location */}
+        <div className={`mb-1 ${textColorClass}`}>
+          <FontAwesomeIcon icon={faMapMarkerAlt} />
+          <span className="pl-2">Hawthorne, NJ, USA</span>
+        </div>
 
-            <Card.ImgOverlay className='text-left text-black'>
-                <h2>Karim Yakoub</h2>
-                <p className='font-weight-500 smaller w-md-75 w-50 float-left'>
-                    Software Engineer, Student, and Science Lover
-                </p>
-            </Card.ImgOverlay>
+        {/* GitHub link */}
+        <div className="mb-1">
+          <a
+            className={`${textColorClass} text-primary hover:text-secondary dark:text-primary-dark dark:hover:text-secondary-dark`}
+            href="https://github.com/kyak15"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FontAwesomeIcon icon={faGithub} />
+            <span className="pl-2">github.com/kyak15</span>
+          </a>
+        </div>
 
-            <Card.Body>
+        {/* LinkedIn link */}
+        <div className="mb-4">
+          <a
+            className={`${textColorClass} text-primary hover:text-secondary dark:text-primary-dark dark:hover:text-secondary-dark`}
+            href="https://linkedin.com/in/karim-yakoub"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FontAwesomeIcon icon={faLinkedin} />
+            <span className="pl-2">linkedin.com/in/karim-yakoub</span>
+          </a>
+        </div>
 
-                <div className={`mb-1 ${textColor}`}>
-                    <FontAwesomeIcon icon={ faMapMarkerAlt } />
-                    <span className='pl-2'>Hawthorne, NJ, USA</span>
-                </div>
+        {/* Skills */}
+        {skills.map((s) => (
+          <div key={s.title} className={`pb-3 ${textColorClass}`}>
+            <span className={`font-bold ${textColorClass}`}>{s.title}: </span>
+            {s.skills.join(", ")}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
 
-                <div className='mb-1'>
-                    <Card.Link className={textColor} href='https://github.com/kyak15' target='blank'>
-                        <FontAwesomeIcon icon={ faGithub } />
-                        <span className='pl-2'>github.com/kyak15</span>
-                    </Card.Link>
-                </div>
-
-                <div className='mb-4'>
-                    <Card.Link className={textColor} href='https://linkedin.com/in/karim-yakoub' target='blank'>
-                        <FontAwesomeIcon icon={ faLinkedin } />
-                        <span className='pl-2'>linkedin.com/in/karim-yakoub</span>
-                    </Card.Link>
-                </div>
-                
-                {skills.map(s => 
-            <div key={s.title} className={`pb-3   ${textColor}`} >
-              <span className={`font-weight-bold ${textColor}`}>{s.title}: </span>
-              {s.skills.join(', ')}
-            </div>
-          )}
-
-
-            </Card.Body>
-
-        </Card>
-    )
-}
-
-export default AboutCard
+export default AboutCard;

@@ -1,125 +1,139 @@
-import React from 'react'
-import { Button, Col, Container, Row } from 'react-bootstrap'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCode,
-  faFileAlt,
   faGraduationCap,
   faLaptopCode,
   faMoon,
   faSun,
-  faUsers
-} from '@fortawesome/free-solid-svg-icons'
-import Milestone from '../components/Milestone'
-import Project from '../components/Project'
-import milestones from '../content/milestones'
-import education from '../content/education'
-import leadership from '../content/leadership'
-import projects from '../content/projects'
-import AboutCard from '../components/AboutCard'
+  faUsers,
+} from "@fortawesome/free-solid-svg-icons";
+import Milestone from "../components/Milestone";
+import Project from "../components/Project";
+import milestones from "../content/milestones";
+import education from "../content/education";
+import leadership from "../content/leadership";
+import projects from "../content/projects";
+import AboutCard from "../components/AboutCard";
 
-class Home extends React.Component {
-	constructor(props) {
-		super(props)
+const Home = () => {
+  // Initialize dark mode based on document class (persists across navigation)
+  const [darkMode, setDarkMode] = useState(() => 
+    document.documentElement.classList.contains("dark")
+  );
 
-		this.state = {
-			darkMode: false,
-		}
-	}
+  // Sync document classes when darkMode changes
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+      document.body.classList.add("bg-gray-900");
+    } else {
+      document.documentElement.classList.remove("dark");
+      document.body.classList.remove("bg-gray-900");
+    }
+  }, [darkMode]);
 
-  onDarkModeToggle = () => {
-    this.setState({darkMode: !this.state.darkMode});
-    document.body.classList.toggle('bg-dark')
+  const onDarkModeToggle = () => {
+    setDarkMode(!darkMode);
   };
 
-  onResumeClick = () => {
-    window.open('/karim_yakoub_resume.pdf', '_blank');
-  };
-
-  render = () => (
-    <Container className={`px-md-0 py-5 ${this.state.darkMode ? 'text-light' : 'text-dark'}`}>
-      <div id='dark-mode-toggle' className='text-right'>
-        <Button variant="link" onClick={this.onDarkModeToggle} className='mode-toggle' title={this.state.darkMode ? 'Light mode' : 'Dark mode'}>
-          <FontAwesomeIcon id='sun' icon={faSun} className={this.state.darkMode ? 'inactive-icon' : 'active-icon'}/>
-          <FontAwesomeIcon icon={faMoon} className={this.state.darkMode ? 'active-icon' : 'inactive-icon'} />
-        </Button>
-        <Button variant="link" onClick={this.onResumeClick} className='mode-toggle' title='Resume'>
-          <FontAwesomeIcon icon={faFileAlt} /> 
-          <span className='pl-3'>Resume</span>
-        </Button>
+  return (
+    <div
+      className={`container mx-auto px-4 md:px-0 py-10 ${
+        darkMode ? "text-gray-100" : "text-gray-900"
+      }`}
+    >
+      {/* Dark mode toggle */}
+      <div className="relative z-[2000] flex justify-end gap-1.5">
+        <button
+          onClick={onDarkModeToggle}
+          className="btn-link rounded-[20px] px-3 py-2 transition-all hover:bg-primary/10 dark:hover:bg-primary-dark/20"
+          title={darkMode ? "Light mode" : "Dark mode"}
+        >
+          <FontAwesomeIcon
+            icon={faSun}
+            className={darkMode ? "hidden" : "inline"}
+          />
+          <FontAwesomeIcon
+            icon={faMoon}
+            className={darkMode ? "inline" : "hidden"}
+          />
+        </button>
+        <Link
+          to="/blog"
+          className="btn-link rounded-[20px] px-3 py-2 transition-all hover:bg-primary/10 dark:hover:bg-primary-dark/20"
+          title="Blog"
+        >
+          <span className="pl-3">Blog</span>
+        </Link>
       </div>
-      <Row>
-        <Col md='4' className='px-md-0'>
-          <div id='about' className='sticky-top'>
-            <AboutCard darkMode={this.state.darkMode}/>
+
+      {/* Main content grid */}
+      <div className="flex flex-col md:flex-row">
+        {/* Left sidebar - About card */}
+        <div className="md:w-1/3 md:px-0">
+          <div className="sticky top-0 pt-[75px] pb-2.5 -mt-[75px]">
+            <AboutCard darkMode={darkMode} />
           </div>
-        </Col>
+        </div>
 
-        <Col md='8' className='pl-md-0 pl-md-5'>
-          <h4 className='section-title pt-0'>
-            <FontAwesomeIcon icon={faLaptopCode}/>
-            <span className='pl-3'>experience</span>
+        {/* Right content area */}
+        <div className="md:w-2/3 md:pl-10">
+          {/* Experience section */}
+          <h4 className="section-title !pt-0">
+            <FontAwesomeIcon icon={faLaptopCode} />
+            <span className="pl-3">experience</span>
           </h4>
-          {renderMilestones(milestones)}
+          {milestones.map((m, i) => (
+            <Milestone milestone={m} id={i} key={m.company} />
+          ))}
 
-          <h4 className='section-title'>
-            <FontAwesomeIcon icon={faGraduationCap}/>
-            <span className='pl-3'>education</span>
+          {/* Education section */}
+          <h4 className="section-title">
+            <FontAwesomeIcon icon={faGraduationCap} />
+            <span className="pl-3">education</span>
           </h4>
           <Milestone milestone={education[0]} id={0} />
-          <div className='small'>
-
+          <div className="text-sm">
             <div>
-              <span className='font-weight-bold'>Coursework: </span>
- <span> </span>
-            Data Structures and Algorithms, Software Engineering, Computer Networking, Analysis of Algorithms,
-            Parallel Programming, Intro to Databases, Computer Architecture and Assembly,
-            Web Development, Fundamentals of Programming
+              <span className="font-bold">Coursework: </span>
+              <span> </span>
+              Data Structures and Algorithms, Software Engineering, Computer
+              Networking, Analysis of Algorithms, Parallel Programming, Intro to
+              Databases, Computer Architecture and Assembly, Web Development,
+              Fundamentals of Programming
             </div>
           </div>
           <Milestone milestone={education[1]} id={1} />
-          <div className='small'>
-            <span className='font-weight-bold'>Coursework: </span>
-            Cellular and Molecular Biology, Organic Chemistry, Biochemistry, Calculus 1, Statistics, 
-            Genetics, Anatomy and Physiology,
-            Ecology, Evolution, General Chemistry, General Biology
-
+          <div className="text-sm">
+            <span className="font-bold">Coursework: </span>
+            Cellular and Molecular Biology, Organic Chemistry, Biochemistry,
+            Calculus 1, Statistics, Genetics, Anatomy and Physiology, Ecology,
+            Evolution, General Chemistry, General Biology
           </div>
 
-          <h4 className='section-title'>
-            <FontAwesomeIcon icon={faCode}/>
-            <span className='pl-3'>projects</span>
+          {/* Projects section */}
+          <h4 className="section-title">
+            <FontAwesomeIcon icon={faCode} />
+            <span className="pl-3">projects</span>
           </h4>
-          {renderProjects(projects)}
+          {projects.map((p, i) => (
+            <Project project={p} id={i} key={p.title} />
+          ))}
 
-          <h4 className='section-title'>
-            <FontAwesomeIcon icon={faUsers}/>
-            <span className='pl-3'>leadership</span>
+          {/* Leadership section */}
+          <h4 className="section-title">
+            <FontAwesomeIcon icon={faUsers} />
+            <span className="pl-3">leadership</span>
           </h4>
-          {renderMilestones(leadership)}
-
-
-
-
-        </Col>
-      </Row>
-    </Container>
-  )
-}
-  
-const renderMilestones = milestones => {
-  let i = 0
-  return milestones.map(m => 
-    <Milestone milestone={m} id={i++} key={m.company} />         
-  )
-}
-
-const renderProjects = projects => {
-  let i = 0
-  return projects.map(p => 
-    <Project project={p} id={i++} key={p.title} />         
-  )
-}
+          {leadership.map((m, i) => (
+            <Milestone milestone={m} id={i} key={m.company} />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default Home;
-  
