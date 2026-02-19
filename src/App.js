@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./containers/Home.js";
 import Blog from "./containers/Blog.js";
 import BlogCategory from "./containers/BlogCategory.js";
+import MovieDetail from "./containers/MovieDetail.js";
 import NotFound from "./components/NotFound.js";
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/movies/:slug" element={<MovieDetail />} />
         <Route path="/blog/:category" element={<BlogCategory />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

@@ -1,6 +1,8 @@
 import { Link, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilm, faMusic, faBook } from "@fortawesome/free-solid-svg-icons";
+import Movie from "../components/Movie";
+import moviesContent from "../content/movies";
 
 const categoryConfig = {
   movies: {
@@ -74,22 +76,29 @@ const BlogCategory = () => {
           </div>
         </div>
 
-        {/* Empty state */}
-        <div
-          className={`rounded-2xl border-2 border-dashed ${config.borderColor} p-12 text-center`}
-        >
-          <FontAwesomeIcon
-            icon={config.icon}
-            className={`text-6xl ${config.color} opacity-30 mb-4`}
-          />
-          <p className="text-gray-500 dark:text-gray-400 text-lg">
-            No {config.title.toLowerCase()} posts yet. Check back soon!
-          </p>
-        </div>
+        {/* Content */}
+        {category === "movies" && moviesContent.length > 0 ? (
+          <div className="space-y-16">
+            {moviesContent.map((movie, index) => (
+              <Movie key={movie.slug} movie={movie} index={index} />
+            ))}
+          </div>
+        ) : (
+          <div
+            className={`rounded-2xl border-2 border-dashed ${config.borderColor} p-12 text-center`}
+          >
+            <FontAwesomeIcon
+              icon={config.icon}
+              className={`text-6xl ${config.color} opacity-30 mb-4`}
+            />
+            <p className="text-gray-500 dark:text-gray-400 text-lg">
+              No {config.title.toLowerCase()} posts yet. Check back soon!
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );
 };
 
 export default BlogCategory;
-
