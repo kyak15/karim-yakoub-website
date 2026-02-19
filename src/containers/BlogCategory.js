@@ -79,7 +79,7 @@ const BlogCategory = () => {
         {/* Content */}
         {category === "movies" && moviesContent.length > 0 ? (
           <div className="space-y-16">
-            {moviesContent.map((movie, index) => (
+            {moviesContent.toReversed().map((movie, index) => (
               <Movie key={movie.slug} movie={movie} index={index} />
             ))}
           </div>

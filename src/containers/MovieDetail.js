@@ -8,20 +8,25 @@ const parseMarkdown = (text) => {
   let key = 0;
 
   while (remaining.length > 0) {
-    // Match _italic_ or **bold**
+    // Match _italic_, **bold**, or [text](url)
     const italicMatch = remaining.match(/_(.*?)_/);
     const boldMatch = remaining.match(/\*\*(.*?)\*\*/);
+    const linkMatch = remaining.match(/\[(.*?)\]\((.*?)\)/);
 
-    // Find which comes first
     let firstMatch = null;
     let matchType = null;
 
-    if (italicMatch && (!boldMatch || italicMatch.index <= boldMatch.index)) {
-      firstMatch = italicMatch;
-      matchType = "italic";
-    } else if (boldMatch) {
-      firstMatch = boldMatch;
-      matchType = "bold";
+    // Determine which match comes first
+    const matches = [];
+    if (italicMatch) matches.push({ match: italicMatch, type: 'italic', index: italicMatch.index });
+    if (boldMatch) matches.push({ match: boldMatch, type: 'bold', index: boldMatch.index });
+    if (linkMatch) matches.push({ match: linkMatch, type: 'link', index: linkMatch.index });
+
+    matches.sort((a, b) => a.index - b.index);
+
+    if (matches.length > 0) {
+      firstMatch = matches[0].match;
+      matchType = matches[0].type;
     }
 
     if (firstMatch) {
@@ -32,8 +37,10 @@ const parseMarkdown = (text) => {
       // Add the formatted text
       if (matchType === "italic") {
         parts.push(<em key={key++}>{firstMatch[1]}</em>);
-      } else {
+      } else if (matchType === "bold") {
         parts.push(<strong key={key++}>{firstMatch[1]}</strong>);
+      } else if (matchType === "link") {
+        parts.push(<a key={key++} href={firstMatch[2]} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline dark:text-blue-400">{firstMatch[1]}</a>);
       }
       remaining = remaining.slice(firstMatch.index + firstMatch[0].length);
     } else {

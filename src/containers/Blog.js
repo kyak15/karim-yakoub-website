@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilm, faMusic, faBook } from "@fortawesome/free-solid-svg-icons";
 import mountainImg from "../img/mountain.jpg";
 import musicImg from "../img/music.png";
-import garyImg from "../img/gary.png"
+import garyImg from "../img/gary.png";
 
 const categories = [
   {
@@ -22,7 +22,7 @@ const categories = [
     title: "Books",
     icon: faBook,
     path: "/blog/books",
-    image: garyImg
+    image: garyImg,
   },
 ];
 
@@ -42,18 +42,14 @@ const Blog = () => {
             Blog
           </h1>
           <p className="text-gray-600 dark:text-gray-400 text-lg">
-            Thoughts and Reviews on Media I've Consumed
+            Thoughts on Media I find Significant (Without Spoilers)
           </p>
         </div>
 
         {/* Category Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {categories.map((category) => (
-            <Link
-              key={category.title}
-              to={category.path}
-              className="group"
-            >
+            <Link key={category.title} to={category.path} className="group">
               {/* Icon and Title - Above the card */}
               <div className="flex items-center gap-3 mb-3">
                 <FontAwesomeIcon
@@ -85,7 +81,7 @@ const Blog = () => {
                     <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-300" />
                   </>
                 )}
-                
+
                 {/* Decorative circle (only for non-image cards) */}
                 {!category.image && (
                   <div className="absolute -right-8 -bottom-8 w-32 h-32 rounded-full bg-white/10 group-hover:scale-150 transition-transform duration-500" />
