@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilm, faMusic, faBook } from "@fortawesome/free-solid-svg-icons";
 import mountainImg from "../img/mountain.jpg";
 import musicImg from "../img/music.png";
+import garyImg from "../img/gary.png"
 
 const categories = [
   {
@@ -21,8 +22,7 @@ const categories = [
     title: "Books",
     icon: faBook,
     path: "/blog/books",
-    color: "from-emerald-500 to-teal-400",
-    hoverColor: "group-hover:from-emerald-600 group-hover:to-teal-500",
+    image: garyImg
   },
 ];
 
